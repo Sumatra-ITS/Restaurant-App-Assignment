@@ -12,6 +12,13 @@ import { DishCardComponent } from './components/dish-card/dish-card.component';
 import { RestaurantCoverComponent } from './components/restaurant-cover/restaurant-cover.component';
 import {NgOptimizedImage} from "@angular/common";
 import { H2Component } from './components/h2/h2.component';
+import {ToggleButtonModule} from "primeng/togglebutton";
+import { ButtonComponent } from './components/button/button.component';
+import { H4Component } from './components/h4/h4.component';
+import { PComponent } from './components/p/p.component';
+import {BadgeModule} from "primeng/badge";
+import { CounterComponent } from './components/counter/counter.component';
+import { IconButtonComponent } from './components/icon-button/icon-button.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +27,12 @@ import { H2Component } from './components/h2/h2.component';
     SearchInputComponent,
     DishCardComponent,
     RestaurantCoverComponent,
-    H2Component
+    H2Component,
+    ButtonComponent,
+    H4Component,
+    PComponent,
+    CounterComponent,
+    IconButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +41,8 @@ import { H2Component } from './components/h2/h2.component';
     SidebarModule,
     ButtonModule,
     NgOptimizedImage,
+    ToggleButtonModule,
+    BadgeModule,
   ],
   providers: [
     provideClientHydration()

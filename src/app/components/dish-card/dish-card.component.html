@@ -1,0 +1,23 @@
+<div class="border p-1 flex rounded-lg shadow-sm cursor-pointer hover:bg-gray-100">
+  <p-badge class="absolute" styleClass="bg-red-500 m-1" [value]="2" />
+  <img height="197" width="194" ngSrc="/assets/img/dish-1.png">
+  <div class="p-6 w-full flex flex-col justify-between">
+    <div>
+      <div class="flex justify-between items-baseline">
+        <app-h4>Burger</app-h4>
+        <i class="pi pi-exclamation-circle"></i>
+      </div>
+      <app-p>Brioche bun, chicken in Char Siu sauce, romaine lettuce, pickled cucumbers, burger sauce, banana jerk sauce, coleslaw, cilantro</app-p>
+    </div>
+    <div class="flex items-baseline gap-3">
+<!--      <app-button color="black">Add to card</app-button>-->
+
+      <app-counter></app-counter>
+
+      <span class="text-[18px] font-semibold">
+        € 13.00
+      </span>
+    </div>
+  </div>
+
+</div>

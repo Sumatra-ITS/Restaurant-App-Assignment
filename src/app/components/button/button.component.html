@@ -1,0 +1,11 @@
+<button
+  [class.rounded-full]="radius() == 'full'"
+  [class.rounded-lg]="radius() == 'lg'"
+  [class.text-white]="color() == 'black'"
+  [class.bg-black]="color() == 'black'"
+  [class.text-black]="color() == 'gray'"
+  [class.bg-gray-100]="color() == 'gray'"
+  [class.hover:bg-gray-300]="color() == 'gray'"
+  class="p-1 px-4">
+  <ng-content></ng-content>
+</button>
