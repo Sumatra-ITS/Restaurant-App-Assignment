@@ -1,5 +1,5 @@
 <div>
-  <div class="absolute top-0 blur-sm -z-10 h-screen bg-top bg-cover w-full bg-[url('/assets/img/kitchen_cover.jpeg')]">
+  <div class="hidden sm:block absolute top-0 blur-sm -z-10 h-screen bg-top bg-cover w-full bg-[url('/assets/img/kitchen_cover.jpeg')]">
     <div class="h-screen bg-gradient-to-b from-transparent to-white">
     </div>
   </div>
@@ -12,23 +12,24 @@
     <app-order></app-order>
   </p-sidebar>
 
-  <div class="container p-2 mt-16 mx-auto rounded-lg bg-white min-h-screen">
-    <app-restaurant-cover></app-restaurant-cover>
-    <div class="p-2 mt-4">
-      <div class="flex justify-between mb-8">
-        <app-select-button [(value)]="selectedOption" [options]="options"></app-select-button>
-        <app-search-input></app-search-input>
-      </div>
+  <div class="sm:px-12 md:px-24">
+    <div class="container p-2 sm:mt-16 mx-auto rounded-lg bg-white min-h-screen">
+      <app-restaurant-cover></app-restaurant-cover>
+      <div class="p-2 mt-4">
+        <div class="flex flex-col gap-3 justify-end sm:flex-row sm:justify-between mb-8">
+          <app-select-button [(value)]="selectedOption" [options]="options"></app-select-button>
+          <app-search-input></app-search-input>
+        </div>
 
-      <div class="grid grid-cols-2 gap-4">
-
-        @if (order$ | async; as order) {
-          @for (dish of dishes$ | async; track dish.id) {
-            <app-dish-card [orderLine]="order[dish.id]" (quantityChange)="quantityChange(dish, $event)"
-                           [dish]="dish"></app-dish-card>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          @if (order$ | async; as order) {
+            @for (dish of dishes$ | async; track dish.id) {
+              <app-dish-card [orderLine]="order[dish.id]" (quantityChange)="quantityChange(dish, $event)"
+                             [dish]="dish"></app-dish-card>
+            }
           }
-        }
 
+        </div>
       </div>
     </div>
   </div>
