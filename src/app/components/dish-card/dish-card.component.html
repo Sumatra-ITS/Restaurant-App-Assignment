@@ -1,21 +1,24 @@
 <div class="border p-1 flex rounded-lg shadow-sm cursor-pointer hover:bg-gray-100">
-  <p-badge class="absolute" styleClass="bg-red-500 m-1" [value]="2" />
-  <img height="197" width="194" ngSrc="/assets/img/dish-1.png">
+  @if (orderLine()?.quantity) {
+    <p-badge class="absolute" styleClass="bg-red-500 m-1" [value]="orderLine()?.quantity"/>
+  }
+  <img height="197" width="194" [ngSrc]="dish().image" [alt]="dish().name">
   <div class="p-6 w-full flex flex-col justify-between">
     <div>
       <div class="flex justify-between items-baseline">
-        <app-h4>Burger</app-h4>
+        <app-h4>{{ dish().name }}</app-h4>
         <i class="pi pi-exclamation-circle"></i>
       </div>
-      <app-p>Brioche bun, chicken in Char Siu sauce, romaine lettuce, pickled cucumbers, burger sauce, banana jerk sauce, coleslaw, cilantro</app-p>
+      <app-p>{{ dish().description }}</app-p>
     </div>
     <div class="flex items-baseline gap-3">
-<!--      <app-button color="black">Add to card</app-button>-->
-
-      <app-counter></app-counter>
-
+      @if (orderLine()) {
+        <app-counter [value]="orderLine()?.quantity" (valueChange)="changeQuantity($event)"></app-counter>
+      } @else {
+        <app-button color="black" (click)="changeQuantity(1)">Add to card</app-button>
+      }
       <span class="text-[18px] font-semibold">
-        € 13.00
+        € {{ dish().price }}
       </span>
     </div>
   </div>

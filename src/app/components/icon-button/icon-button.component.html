@@ -1,3 +1,12 @@
-<button class="p-2 text-black rounded-lg bg-[#EBE7E7] h-[32px] w-[32px] hover:bg-gray-300">
+<button
+  [class.h-[32px]]="size() == 'md'"
+  [class.w-[32px]]="size() == 'md'"
+  [class.h-[90px]]="size() == 'lg'"
+  [class.w-[90px]]="size() == 'lg'"
+  [class.rounded-lg]="radius() == 'lg'"
+  [class.rounded-full]="radius() == 'full'"
+  [class.bg-red-500]="bg() == 'red'"
+  [class.hover:bg-red-400]="bg() == 'red'"
+  class="p-2 text-black bg-[#EBE7E7] hover:bg-gray-300">
   <ng-content></ng-content>
 </button>

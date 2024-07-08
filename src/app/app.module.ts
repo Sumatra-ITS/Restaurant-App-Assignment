@@ -19,6 +19,15 @@ import { PComponent } from './components/p/p.component';
 import {BadgeModule} from "primeng/badge";
 import { CounterComponent } from './components/counter/counter.component';
 import { IconButtonComponent } from './components/icon-button/icon-button.component';
+import {provideHttpClient, withFetch} from "@angular/common/http";
+import { OrderComponent } from './components/order/order.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { H3Component } from './components/h3/h3.component';
+import { OrderLineComponent } from './components/order-line/order-line.component';
+import { DataListComponent } from './components/data-list/data-list.component';
+import { H5Component } from './components/h5/h5.component';
+import { InputFieldComponent } from './components/input-field/input-field.component';
+import { CheckboxComponent } from './components/checkbox/checkbox.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +41,15 @@ import { IconButtonComponent } from './components/icon-button/icon-button.compon
     H4Component,
     PComponent,
     CounterComponent,
-    IconButtonComponent
+    IconButtonComponent,
+    OrderComponent,
+    PaymentComponent,
+    H3Component,
+    OrderLineComponent,
+    DataListComponent,
+    H5Component,
+    InputFieldComponent,
+    CheckboxComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +62,8 @@ import { IconButtonComponent } from './components/icon-button/icon-button.compon
     BadgeModule,
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideHttpClient(withFetch())
   ],
   bootstrap: [AppComponent]
 })

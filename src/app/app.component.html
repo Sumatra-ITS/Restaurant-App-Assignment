@@ -1,30 +1,42 @@
 <div>
-  <div class="absolute blur-sm -z-10 h-screen bg-top bg-cover w-full bg-[url('/assets/img/kitchen_cover.jpeg')]">
+  <div class="absolute top-0 blur-sm -z-10 h-screen bg-top bg-cover w-full bg-[url('/assets/img/kitchen_cover.jpeg')]">
+    <div class="h-screen bg-gradient-to-b from-transparent to-white">
+    </div>
   </div>
-  <div class="h-screen pt-16 px-40 bg-gradient-to-b from-transparent to-white">
-    <p-sidebar class="bg-white" [(visible)]="visible" position="right">
-      <h3>Sidebar</h3>
-      <p>
-        Lorem ipsum dolor sit amet...
-      </p>
-    </p-sidebar>
-    <div class="container rounded-lg p-2 mx-auto bg-white min-h-screen">
-      <app-restaurant-cover></app-restaurant-cover>
-      <div class="p-2 mt-4">
-        <div class="flex justify-between mb-8">
-          <app-select-button [(value)]="selectedOption" [options]="options"></app-select-button>
-          <app-search-input></app-search-input>
-        </div>
 
-        <div class="grid grid-cols-2 gap-4">
-          <app-dish-card></app-dish-card>
-          <app-dish-card></app-dish-card>
-          <app-dish-card></app-dish-card>
-          <app-dish-card></app-dish-card>
-          <app-dish-card></app-dish-card>
-          <app-dish-card></app-dish-card>
-        </div>
+  <p-sidebar styleClass="w-[381px]" [(visible)]="paymentVisible" position="right" title="hello there">
+    <app-payment></app-payment>
+  </p-sidebar>
+
+  <p-sidebar styleClass="w-[381px]" [(visible)]="orderVisible" position="right">
+    <app-order></app-order>
+  </p-sidebar>
+
+  <div class="container p-2 mt-16 mx-auto rounded-lg bg-white min-h-screen">
+    <app-restaurant-cover></app-restaurant-cover>
+    <div class="p-2 mt-4">
+      <div class="flex justify-between mb-8">
+        <app-select-button [(value)]="selectedOption" [options]="options"></app-select-button>
+        <app-search-input></app-search-input>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+
+        @if (order$ | async; as order) {
+          @for (dish of dishes$ | async; track dish.id) {
+            <app-dish-card [orderLine]="order[dish.id]" (quantityChange)="quantityChange(dish, $event)"
+                           [dish]="dish"></app-dish-card>
+          }
+        }
+
       </div>
     </div>
   </div>
 </div>
+
+<app-icon-button (click)="toggleSideBar('order')" class="fixed bottom-10 right-10" size="lg" radius="full" bg="red">
+  @if (orderLines$ | async; as orderLines) {
+    <p-badge class="absolute top-3 right-3" styleClass="bg-white text-black m-1" [value]="orderLines.length"/>
+  }
+  <i class="pi pi-shopping-cart text-white text-4xl"></i>
+</app-icon-button>

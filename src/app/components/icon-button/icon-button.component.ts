@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, input} from '@angular/core';
 
 @Component({
   selector: 'app-icon-button',
@@ -6,4 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './icon-button.component.css'
 })
 export class IconButtonComponent {
+  size = input<'sm' | 'md' | 'lg'>('md')
+  radius = input<'lg' | 'full'>('lg')
+  bg = input<'red'>()
 }

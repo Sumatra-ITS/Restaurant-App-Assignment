@@ -1,0 +1,9 @@
+<label class="flex items-center font-semibold mb-4">
+  <input
+    [value]="value()"
+    (change)="valueChanged($event)"
+    class="w-[16px] h-[16px] accent-black mr-2" type="checkbox">
+  <span>
+    {{ label() }}
+  </span>
+</label>

@@ -1,0 +1,25 @@
+<label class="block mb-4">
+  <span class="font-semibold">
+  {{ label() }}
+    <span class="text-red-500">
+      {{ required() ? '*' : '' }}
+    </span>
+  </span>
+  <div
+    [class.relative]="prefix()"
+    [class.flex]="prefix()"
+    [class.items-baseline]="prefix()"
+  >
+    @if (prefix()) {
+      <span class="absolute ml-4 bottom-1/4">
+        {{ prefix() }}
+      </span>
+    }
+    <input
+      [value]="value()"
+      (change)="valueChanged($event)"
+      [class.pl-16]="!!prefix()"
+      class="bg-gray-50 placeholder:text-gray-700 rounded-lg p-3 w-full" [placeholder]="placeholder()"
+      [type]="type()"/>
+  </div>
+</label>

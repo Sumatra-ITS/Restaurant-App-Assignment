@@ -1,0 +1,17 @@
+<div class="text-black">
+  <app-h3>Your order</app-h3>
+  <div class="flex flex-col gap-3 mb-8">
+    @for (ol of orderLines$ | async; track ol.dishId) {
+      <app-order-line [orderLine]="ol"></app-order-line>
+    }
+  </div>
+
+  <div class="flex flex-col gap-3">
+    @if (summary$ | async; as summary) {
+      <app-data-list [value]="summary"></app-data-list>
+      <app-button width="full" size="lg" color="orange" (click)="toggleSideBar('payment')"> Order ( {{ summary[0][1]}})</app-button>
+      <app-button width="full" size="lg" (click)="toggleSideBar()">Continue shopping</app-button>
+    }
+  </div>
+
+</div>

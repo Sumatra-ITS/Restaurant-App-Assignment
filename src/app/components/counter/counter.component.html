@@ -1,11 +1,11 @@
 <div class="flex gap-3 items-baseline">
-  <app-icon-button>
-    <i class="pi pi-plus text-sm !font-black"></i>
+  <app-icon-button (click)="increment(-1)">
+    <i class="pi pi-minus text-sm !font-black"></i>
   </app-icon-button>
   <span class="font-bold text-[16px]">
-    22
+    {{ value() || 0 }}
   </span>
-  <app-icon-button>
-    <i class="pi pi-minus text-sm !font-black"></i>
+  <app-icon-button (click)="increment(1)">
+    <i class="pi pi-plus text-sm !font-black"></i>
   </app-icon-button>
 </div>

@@ -1,0 +1,6 @@
+<dl class="grid grid-cols-2 font-bold text-[16px] [&>dd]:text-right">
+  @for (v of value(); track v[1]) {
+    <dt>{{ v[0] }}</dt>
+    <dd>{{ v[1] }}</dd>
+  }
+</dl>

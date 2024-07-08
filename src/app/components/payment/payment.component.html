@@ -1,0 +1,21 @@
+<div class="text-black">
+  <app-h3>Payment</app-h3>
+
+  <div class="mb-8"></div>
+
+  <app-h5>Contact information</app-h5>
+  <app-input-field [(value)]="paymentForm.fullName" label="Name" placeholder="Enter your full name" [required]="true"></app-input-field>
+  <app-input-field [(value)]="paymentForm.phoneNumber" label="Contact phone number" placeholder="XXX XX XX" prefix="+44" [required]="true"></app-input-field>
+  <app-input-field [(value)]="paymentForm.email" label="Email" placeholder="mail@mail.com" type="email" [required]="true"></app-input-field>
+
+  <app-h5>Delivery to</app-h5>
+  <app-input-field [(value)]="paymentForm.address" label="Address" placeholder="Enter address to deliver here" [required]="true"></app-input-field>
+  <app-input-field [(value)]="paymentForm.city" label="City" placeholder="Enter city" [required]="true"></app-input-field>
+
+  <app-checkbox [(value)]="paymentForm.dontCallMe" label="You can do not call me to confirm the order"></app-checkbox>
+
+  @if (summary$ | async; as summary) {
+    <app-button width="full" size="lg" color="orange" (click)="submit()"> Order ( {{ summary[0][1]}})</app-button>
+    <app-button width="full" size="lg" (click)="toggleSideBar()">Continue shopping</app-button>
+  }
+</div>

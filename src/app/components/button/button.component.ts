@@ -6,6 +6,8 @@ import {Component, input} from '@angular/core';
   styleUrl: './button.component.css'
 })
 export class ButtonComponent {
-  color = input<'black' | 'gray'>('gray')
+  color = input<'orange' | 'black' | 'gray'>('gray')
   radius = input<'full' | 'lg'>('lg')
+  size = input<'sm' | 'md' | 'lg'>('md')
+  width = input<'full'>()
 }

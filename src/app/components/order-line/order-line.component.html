@@ -1,0 +1,8 @@
+<div class="py-6 px-4 border rounded-lg w-full bg-gray-100">
+  <app-h4>{{orderLine().dishName}}</app-h4>
+  <app-p>Price per item: € {{orderLine().dishPrice}}</app-p>
+  <div class="flex justify-between my-4">
+    <app-h4 class="text-orange-600">Total: € {{ orderLine().quantity * orderLine().dishPrice }}</app-h4>
+    <app-counter [value]="orderLine().quantity" (valueChange)="quantityChange($event)"></app-counter>
+  </div>
+</div>

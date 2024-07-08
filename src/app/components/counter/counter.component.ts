@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, input, output} from '@angular/core';
 
 @Component({
   selector: 'app-counter',
@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrl: './counter.component.css'
 })
 export class CounterComponent {
+
+  valueChange = output<number>()
+  value = input<number>();
+
+  increment(step: number) {
+    this.valueChange.emit((this.value() || 0) + step)
+  }
 
 }

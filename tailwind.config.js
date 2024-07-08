@@ -4,8 +4,14 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: {},
+    screens: {
+      minmd: { min: '768px' },
+      minlg: { min: '1024px' },
+      minxl: { min: '1280px' },
+      min2xl: { min: '1116px' },
+    },
   },
+  extend: {},
   plugins: [],
 }
 
