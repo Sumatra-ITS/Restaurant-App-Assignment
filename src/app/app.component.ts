@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {DishService, SideBarProps} from "./services/dish.service";
 import {Dish} from "./services/types";
+import {BehaviorSubject, combineLatest, map, switchMap, tap} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,25 @@ import {Dish} from "./services/types";
 })
 export class AppComponent {
 
-  dishes$ = this.dishService.list();
+  _selectedCategory = new BehaviorSubject('popular');
+  _query = new BehaviorSubject('');
+
+  get selectedCategory$() {
+    return this._selectedCategory.asObservable();
+  }
+
+  get query$() {
+    return this._query.asObservable();
+  }
+
+  dishes$ = combineLatest([this.selectedCategory$, this.query$]).pipe(
+    switchMap(cat => {
+      if (cat[0] === 'popular') {
+        return this.dishService.list().pipe(map(d => d.filter(x => x.popular && x.name.toLowerCase().includes(cat[1].toLowerCase()))));
+      }
+      return this.dishService.list().pipe(map(d => d.filter(x => x.category === cat[0] && x.name.toLowerCase().includes(cat[1].toLowerCase()))));
+    }),
+  );
   order$ = this.dishService.order$;
   orderLines$ = this.dishService.orderLines$;
 
@@ -20,11 +39,10 @@ export class AppComponent {
   }
 
   title = 'Restaurant App Assignment';
-  selectedOption = 'popular'
   options = [
     {value: 'popular', name: 'Popular'},
-    {value: 'burgers', name: 'Burgers'},
-    {value: 'steaks', name: 'Steaks'},
+    {value: 'Burgers', name: 'Burgers'},
+    {value: 'Steaks', name: 'Steaks'},
   ];
 
   quantityChange(dish: Dish, quantity: number) {
@@ -33,5 +51,13 @@ export class AppComponent {
 
   toggleSideBar(prop?: SideBarProps) {
     this.dishService.toggleSideBar(prop)
+  }
+
+  categoryChanged(category: string) {
+    this._selectedCategory.next(category);
+  }
+
+  queryChanged(q: string) {
+    this._query.next(q);
   }
 }

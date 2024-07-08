@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, input, output} from '@angular/core';
 
 @Component({
   selector: 'app-search-input',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrl: './search-input.component.css'
 })
 export class SearchInputComponent {
+  value = input<any>();
+  valueChange = output<any>()
 
+  valueChanged(event: Event) {
+    const target = event.target as HTMLInputElement;
+    this.valueChange.emit(target.value)
+  }
 }

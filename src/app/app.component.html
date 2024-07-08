@@ -1,5 +1,6 @@
 <div>
-  <div class="hidden sm:block absolute top-0 blur-sm -z-10 h-screen bg-top bg-cover w-full bg-[url('/assets/img/kitchen_cover.jpeg')]">
+  <div
+    class="hidden sm:block absolute top-0 blur-sm -z-10 h-screen bg-top bg-cover w-full bg-[url('/assets/img/kitchen_cover.jpeg')]">
     <div class="h-screen bg-gradient-to-b from-transparent to-white">
     </div>
   </div>
@@ -17,8 +18,12 @@
       <app-restaurant-cover></app-restaurant-cover>
       <div class="p-2 mt-4">
         <div class="flex flex-col gap-3 justify-end sm:flex-row sm:justify-between mb-8">
-          <app-select-button [(value)]="selectedOption" [options]="options"></app-select-button>
-          <app-search-input></app-search-input>
+          @if (selectedCategory$ | async; as selectedCategory) {
+            <app-select-button [value]="selectedCategory" [options]="options"
+                               (valueChange)="categoryChanged($event)"></app-select-button>
+          }
+
+          <app-search-input [value]="query$ | async" (valueChange)="queryChanged($event)"></app-search-input>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
