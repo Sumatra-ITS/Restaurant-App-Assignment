@@ -1,4 +1,5 @@
 @import "primeicons/primeicons.css";
+@import "@fontsource/poppins/400.css";
 
 @layer tailwind-base, primeng, tailwind-utilities;
 
@@ -14,5 +15,9 @@
 html {
   font-size: 14px;
   color: #12131A;
+}
+
+body {
+  font-family: Poppins, sans-serif;
 }
 
