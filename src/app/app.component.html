@@ -42,7 +42,7 @@
 
 <app-icon-button (click)="toggleSideBar('order')" class="fixed bottom-10 right-10" size="lg" radius="full" bg="red">
   @if (orderLines$ | async; as orderLines) {
-    <p-badge class="absolute top-3 right-3" styleClass="bg-white text-black m-1" [value]="orderLines.length"/>
+    <p-badge class="absolute top-3 right-3" styleClass="bg-white text-bl m-1" [value]="orderLines.length"/>
   }
   <i class="pi pi-shopping-cart text-white text-4xl"></i>
 </app-icon-button>

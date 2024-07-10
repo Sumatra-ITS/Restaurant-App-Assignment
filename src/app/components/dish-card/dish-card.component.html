@@ -1,6 +1,6 @@
-<div class="flex flex-col sm:flex-row border p-1 rounded-lg shadow-sm cursor-pointer hover:bg-gray-100">
+<div class="flex flex-col sm:flex-row border p-1 rounded-lg shadow-sm cursor-pointer hover:bg-gr-2">
   @if (orderLine()?.quantity) {
-    <p-badge class="absolute" styleClass="bg-red-500 m-1" [value]="orderLine()?.quantity"/>
+    <p-badge class="absolute" styleClass="bg-og m-1" [value]="orderLine()?.quantity"/>
   }
   <img class="pl-6 pt-6 sm:pl-0 sm:pt-0" height="197" width="194" [ngSrc]="dish().image" [alt]="dish().name">
   <div class="p-6 w-full flex flex-col justify-between">
