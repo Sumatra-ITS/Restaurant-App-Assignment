@@ -16,6 +16,7 @@
 
   @if (summary$ | async; as summary) {
     <app-button width="full" size="lg" color="orange" (click)="submit()"> Order ( {{ summary[0][1]}})</app-button>
+    <div class="mb-3"></div>
     <app-button width="full" size="lg" (click)="toggleSideBar()">Continue shopping</app-button>
   }
 </div>
